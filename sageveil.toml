@@ -2,10 +2,12 @@
 
 format = """
 [ 󰌪 ](bg:magenta fg:black)[](fg:magenta) \
+$hostname\
 $directory\
 $git_branch\
 $git_status\
 $fill\
+$jobs\
 $c\
 $elixir\
 $elm\
@@ -56,6 +58,12 @@ success_symbol = "[❯](fg:green)"
 error_symbol = "[❯](fg:red)"
 vimcmd_symbol = "[](fg:yellow)"
 
+[hostname]
+ssh_only = true
+format = "[ $ssh_symbol$hostname ]($style)"
+ssh_symbol = "󰌢 "
+style = "fg:bright_magenta"
+
 [directory]
 format = "[ 󰝰 $path$read_only ]($style)"
 style = "fg:green"
@@ -74,6 +82,11 @@ Pictures = " "
 [fill]
 style = "fg:border"
 symbol = "·"
+
+[jobs]
+format = "[ $symbol$number ]($style)"
+style = "fg:yellow"
+number_threshold = 1
 
 [git_branch]
 format = "[ $symbol $branch ]($style)"
